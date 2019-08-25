@@ -1,0 +1,41 @@
+ version: "3"
+
+ services:
+   wp-db_unique-name:
+     image: mysql:5.7
+     volumes:
+       - db_data_storage:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: RootPassword
+       MYSQL_DATABASE: wordpress
+       MYSQL_USER: wordpress
+       MYSQL_PASSWORD: Password
+     container_name: wp-db_unique-name_db
+     networks:
+       - default
+
+   wordpress:
+     depends_on:
+       - wp-db_unique-name
+     image: wordpress:latest
+     networks:
+       - default
+     expose:
+       - 80
+     restart: always
+     environment:
+       VIRTUAL_HOST: subdomain.example.com
+       LETSENCRYPT_HOST: subdomain.example.com
+       LETSENCRYPT_EMAIL: your.mail@example.com      
+       WORDPRESS_DB_HOST: wp-db_unique-name:3306
+       WORDPRESS_DB_USER: wordpress
+       WORDPRESS_DB_PASSWORD: Password
+     container_name: wordpress_unique-name
+ volumes:
+    db_data_storage:
+
+ networks:
+   default:
+     external:
+       name: nginx-proxy
