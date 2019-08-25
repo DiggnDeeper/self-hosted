@@ -8,7 +8,7 @@ I (we) will try to create complete, easy to follow documentation and best practi
 Please feel free to jump in and help out and make it better. 
 
 # nginx reverse proxy with Let's Encrypt
-This template comes from - - 
+This template comes from https://github.com/jwilder/nginx-proxy
 
 This is the heart of the operation. It lets us point our domain name at our server and serve any number of other web-apps secured behind it.  
 
