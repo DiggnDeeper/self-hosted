@@ -1,0 +1,40 @@
+ version: '3'
+
+ services:
+  db:
+    image: mariadb
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=RootPassword
+    env_file:
+      - db.env
+      
+ # use a unique identifier below
+  nextcloud_unique-name:
+    image: nextcloud:apache
+    restart: always
+    ports:
+      - 8080:80 # Can we profide a way to reverse proxy without changing port 8080?
+    volumes:
+      - nextcloud:/var/www/unique-dir
+    environment:
+      - VIRTUAL_HOST=subdomain.example.com
+      - LETSENCRYPT_HOST=subdomain.example.com
+      - LETSENCRYPT_EMAIL=youremail@example.com
+      - MYSQL_HOST=db
+    env_file:
+      - db.env
+    depends_on:
+      - db
+
+ volumes:
+  db:
+  nextcloud:
+    
+ networks:
+   default:
+     external:
+       name: nginx-proxy
