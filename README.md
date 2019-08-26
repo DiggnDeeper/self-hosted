@@ -21,7 +21,7 @@ So, the tl:dr is I do it because it is the easiest and also most versatile way t
 # nginx reverse proxy with Let's Encrypt
 This template comes from https://github.com/jwilder/nginx-proxy
 
-This is the heart of the operation. It lets us point our domain name at our server and serve any number of other web-apps secured behind it.  
+This is the heart of the operation. It lets us point our domain names at our self-hosted server and serve any number of other web-apps behind it and with Let's Encrypt SSL protection.  
 
 
 # NextCloud
