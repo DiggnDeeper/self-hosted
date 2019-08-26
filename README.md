@@ -7,6 +7,7 @@ I (we) will try to create complete, easy to follow documentation and best practi
 
 Please feel free to jump in and help out and make it better.
 
+# What is the reason for this project?
 The push to self-host was rekindled because my host (Hostinger), like most hosts, don't allow file sharing, so I could not run NextCloud on their servers. So, I installed NextCloud on my server and then realized I wanted more copies of it running for clients and myself. To do that, I needed a reverse-proxy and certs for an SSL. The easiest way to do that is with Docker. Also, a new CRM I wanted to try out, Corteza is only available as a Docker image.
 
 Messing with web-apps like NextCloud, WordPress, and CRMs is what I like to do, so now I can. Some new ones only come as Docker images, and they all are available or they can be Docker-ized.
